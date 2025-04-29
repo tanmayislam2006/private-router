@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "private-router-2020",
   storageBucket: "private-router-2020.firebasestorage.app",
   messagingSenderId: "392763947139",
-  appId: "1:392763947139:web:5dce589e77e9615714c3b6",
+  appId: "1:392763947139:web:5dce589e77e9615714c3b6"
 };
 
 // Initialize Firebase

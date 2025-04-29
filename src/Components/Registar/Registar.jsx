@@ -1,13 +1,29 @@
+import React, { useContext } from "react"; // Import useContext
+import { PrivateContext } from "../../Context/PrivateContext";
 
 const Registar = () => {
-
-    
-
+  const { googleLogin,createUser } = useContext(PrivateContext);
 
   const handleSubmit = (e) => {
+    const email=e.target.email.value
+    const password=e.target.password.value
     e.preventDefault();
-    console.log("Form Data Submitted:");
-    // Add your form submission logic here
+    createUser(email,password).then((result)=>{
+      console.log(result);
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -23,7 +39,6 @@ const Registar = () => {
             id="firstName"
             name="firstName"
             className="w-full px-3 py-2 border rounded"
-            required
           />
         </div>
         <div className="mb-4">
@@ -34,9 +49,7 @@ const Registar = () => {
             type="text"
             id="lastName"
             name="lastName"
-
             className="w-full px-3 py-2 border rounded"
-            required
           />
         </div>
         <div className="mb-4">
@@ -46,9 +59,7 @@ const Registar = () => {
           <select
             id="gender"
             name="gender"
-
             className="w-full px-3 py-2 border rounded"
-            required
           >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
@@ -68,7 +79,6 @@ const Registar = () => {
             id="dateOfBirth"
             name="dateOfBirth"
             className="w-full px-3 py-2 border rounded"
-            required
           />
         </div>
         <div className="mb-4">
@@ -83,7 +93,6 @@ const Registar = () => {
             id="phoneNumber"
             name="phoneNumber"
             className="w-full px-3 py-2 border rounded"
-            required
           />
         </div>
         <div className="mb-4">
@@ -95,7 +104,6 @@ const Registar = () => {
             id="email"
             name="email"
             className="w-full px-3 py-2 border rounded"
-            required
           />
         </div>
         <div className="mb-4">
@@ -107,7 +115,6 @@ const Registar = () => {
             id="password"
             name="password"
             className="w-full px-3 py-2 border rounded"
-            required
           />
         </div>
         <button
@@ -115,6 +122,39 @@ const Registar = () => {
           className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
         >
           Register
+        </button>
+        <button
+          onClick={handleGoogleLogin}
+          className="btn bg-white text-black w-full my-2 border-[#e5e5e5]"
+        >
+          <svg
+            aria-label="Google logo"
+            width="16"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <g>
+              <path d="m0 0H512V512H0" fill="#fff"></path>
+              <path
+                fill="#34a853"
+                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+              ></path>
+              <path
+                fill="#4285f4"
+                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+              ></path>
+              <path
+                fill="#fbbc02"
+                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+              ></path>
+              <path
+                fill="#ea4335"
+                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+              ></path>
+            </g>
+          </svg>
+          Register with Google
         </button>
       </form>
     </div>
