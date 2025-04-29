@@ -1,7 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React, { use } from "react";
+import { Link, NavLink } from "react-router";
+import { PrivateContext } from "../../Context/PrivateContext";
 
 const Navbar = () => {
+  const { user, logoutUser } = use(PrivateContext);
+  const handleSignOut = () => {
+    logoutUser();
+  };
   const link = (
     <>
       <li>
@@ -16,44 +21,62 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/login"
+          to="/about"
           className={({ isActive }) =>
             isActive ? "font-bold underline text-blue-600" : ""
           }
         >
-          Login
+          About
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/register"
-          className={({ isActive }) =>
-            isActive ? "font-bold underline text-blue-600" : ""
-          }
-        >
-          Registar
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/orders"
-          className={({ isActive }) =>
-            isActive ? "font-bold underline text-blue-600" : ""
-          }
-        >
-          Orders
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            isActive ? "font-bold underline text-blue-600" : ""
-          }
-        >
-          Dasboard
-        </NavLink>
-      </li>
+      {!user && (
+        <>
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "font-bold underline text-blue-600" : ""
+              }
+            >
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/register"
+              className={({ isActive }) =>
+                isActive ? "font-bold underline text-blue-600" : ""
+              }
+            >
+              Registar
+            </NavLink>
+          </li>
+        </>
+      )}
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/orders"
+              className={({ isActive }) =>
+                isActive ? "font-bold underline text-blue-600" : ""
+              }
+            >
+              Orders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                isActive ? "font-bold underline text-blue-600" : ""
+              }
+            >
+              Dasboard
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -91,7 +114,16 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <>
+            <span>{user.email}</span>
+            <a onClick={handleSignOut} className="btn">
+              Log Out
+            </a>
+          </>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </div>
     </div>
   );

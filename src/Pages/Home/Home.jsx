@@ -1,9 +1,4 @@
-import React, { use } from "react";
-import { PrivateContext } from "../../Context/PrivateContext";
-
 const Home = () => {
-  const { name2 } = use(PrivateContext);
-  console.log(name2);
   return (
     <div
       className="hero min-h-screen"
