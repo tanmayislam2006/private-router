@@ -13,6 +13,7 @@ const Login = () => {
        const password=e.target.password.value
        loginUser(email,password)
        .then((result)=>{
+        console.log(result);
         toast.success("Successfully login")
         navigate(location?.state || '/')
        })

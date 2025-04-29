@@ -15,6 +15,9 @@ const PrivateRouter = ({ children }) => {
   }
   if (!user) {
     // redirect target page use loaction path name
+    /* location.pathname gets the current path the user tried to visit.
+    This value is stored in the navigation state under a property called state
+    */
     return <Navigate state={location?.pathname} to="/login"></Navigate>;
   }
   return children;

@@ -1,12 +1,36 @@
-# React + Vite
+# Firebase Private Router Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates how to build a React application with Firebase authentication and private routing using `react-router`. It also integrates Tailwind CSS and DaisyUI for styling, providing a modern and responsive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## Expanding the ESLint configuration
+### 1. **React + Vite**
+- Utilizes [Vite](https://vitejs.dev/) for fast development and optimized builds.
+- Includes React with HMR (Hot Module Replacement) for a seamless development experience.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 2. **Firebase Authentication**
+- Implements Firebase for user authentication.
+- Features include:
+  - Email/password registration and login.
+  - Google login using Firebase's `signInWithPopup`.
+  - User session management with `onAuthStateChanged`.
+
+### 3. **Private Routing**
+- Protects routes using a `PrivateRouter` component.
+- Redirects unauthenticated users to the login page while preserving the intended destination.
+
+### 4. **Tailwind CSS + DaisyUI**
+- Tailwind CSS is used for utility-first styling.
+- DaisyUI provides pre-designed components for a consistent and modern UI.
+
+### 5. **React Context API**
+- Manages authentication state using the Context API.
+- Provides a `PrivateContext` for sharing user data and authentication methods across components.
+
+---
+
+## Project Structure
+
+The project is organized into the following directories:
